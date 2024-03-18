@@ -1,12 +1,21 @@
+import NewsList from "@/Components/Homepage/NewsList";
+import Navbar from "@/Components/Navbar";
 import { Link, Head } from "@inertiajs/react";
 import React from "react";
+import Paginator from "@/Components/Homepage/Paginator";
 
 export default function Homepage(props) {
-    console.log(props);
+    console.log("props : ", props);
     return (
-        <div className="flex justify-center items-center min-h-screen bg-neutral-800 text-white text-2xl">
+        <div className=" min-h-screen bg-slate-50">
             <Head title={props.title} />
-            <p>{props.description}</p>
+            <Navbar></Navbar>
+            <div className="flex justify-center flex-col lg:flex-row lg:flex-wrap lg:items-strecth items-center gap-4 p-4">
+                <NewsList news={props.news.data}></NewsList>
+            </div>
+            <div className="flex justify-center flex-col lg-flex-row lg:flex-wrap lg:items-strecth items-center gap-4 p-4">
+                <Paginator meta={props.news.meta}></Paginator>
+            </div>
         </div>
     );
 }

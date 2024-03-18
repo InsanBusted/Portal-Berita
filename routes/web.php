@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +18,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return inertia::render('Homepage', [
-        'title' => "Insan Berita",
-        'description' => "Selamat Datang di Insan Berita",
-    ]);
-});
+Route::get('/', [NewsController::class, 'index']);
 
 Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
